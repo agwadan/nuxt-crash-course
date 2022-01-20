@@ -3,12 +3,33 @@
 
 <head>
   <title>Vue 3</title>
+  <style>
+    .box {
+      height: 30px;
+      width: 30px;
+      background: red;
+    }
+
+    .box.box-2 {
+      background: pink;
+    }
+
+    [v-cloak] {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="app">
+  <div class="app" v-cloak>
+    <!-- --------------------------- v-cloak prevents rendering be4 the whole vue app is ready -->
     {{greeting}}
-    <input v-model="greeting" /> <!-- v-model: used to get variables from vue to html -->
+    <input v-model="greeting" /> <!-- --------------------- v-model: used to get variables from vue to html -->
+
+    <div v-if="visible" class="box" /> <!-- --------------- v-if: Conditional that displays element if it's true -->
+    <div v-else-if="visible2" class="box box-2" />
+    <div v-else class=" box box-3" />
+
   </div>
 </body>
 
@@ -17,7 +38,9 @@
   let app = Vue.createApp({
     data: function () {
       return {
-        greeting: 'Hello Vue 3!'
+        greeting: 'Hello Vue 3!',
+        visible: false,
+        visible2: true
       }
     }
   })
