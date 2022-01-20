@@ -26,9 +26,11 @@
     {{greeting}}
     <input v-model="greeting" /> <!-- --------------------- v-model: used to get variables from vue to html -->
 
+    <button v-on:click="visible = !visible">Show</button>
+
     <div v-if="visible" class="box" /> <!-- --------------- v-if: Conditional that displays element if it's true -->
-    <div v-else-if="visible2" class="box box-2" />
-    <div v-else class=" box box-3" />
+    <!--   <div v-else-if="visible2" class="box box-2" />
+    <div v-else class=" box box-3" /> -->
 
   </div>
 </body>
@@ -40,7 +42,6 @@
       return {
         greeting: 'Hello Vue 3!',
         visible: false,
-        visible2: true
       }
     }
   })
