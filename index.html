@@ -2,36 +2,19 @@
 <html lang="en">
 
 <head>
-  <title>Vue 3</title>
+  <title>Vue Components</title>
+
   <style>
-    .box {
-      height: 30px;
-      width: 30px;
-      background: red;
-    }
-
-    .box.box-2 {
-      background: pink;
-    }
-
-    [v-cloak] {
-      display: none;
+    input {
+      margin: 20px;
+      display: block;
     }
   </style>
 </head>
 
 <body>
   <div class="app" v-cloak>
-    <!-- --------------------------- v-cloak prevents rendering be4 the whole vue app is ready -->
-    {{greeting}}
-    <input v-model="greeting" /> <!-- --------------------- v-model: used to get variables from vue to html -->
-
-    <button @click="toggleBox">Show</button>
-
-    <div v-if="visible" class="box" /> <!-- --------------- v-if: Conditional that displays element if it's true -->
-    <!--   <div v-else-if="visible2" class="box box-2" />
-    <div v-else class=" box box-3" /> -->
-
+    <login-form />
   </div>
 </body>
 
@@ -49,9 +32,31 @@
     methods: {
       toggleBox() {
         this.visible = !this.visible
+      },
+
+      greet() {
+        console.log(this.greeting);
       }
     }
   })
+
+  /* All components should be between the app definition and mounting the app */
+
+  app.component('login-form', {
+    template: `
+      <div>
+       <h1> {{title}} </h1>
+        <input type="email"/>  
+        <input type="password"/>  
+      </div>
+    `,
+    data() {
+      return {
+        title: 'Login Form'
+      }
+    }
+  })
+
   app.mount('.app')
 </script>
 
