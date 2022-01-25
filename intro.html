@@ -23,13 +23,13 @@
 <body>
   <div class="app" v-cloak>
     <!-- --------------------------- v-cloak prevents rendering be4 the whole vue app is ready -->
-    {{greeting}}
-    <input @keyup.enter="greet" v-model="greeting" />
+    <!-- {{greeting}} -->
+    <!-- <input @keyup.enter="greet" v-model="greeting" /> -->
     <!-- --------------------- v-model: used to get variables from vue to html -->
 
     <button @click="toggleBox">Show</button>
 
-    <div v-if="visible" class="box" /> <!-- --------------- v-if: Conditional that displays element if it's true -->
+    <test-box v-if="visible" /> <!-- --------------- v-if: Conditional that displays element if it's true -->
     <!--   <div v-else-if="visible2" class="box box-2" />
     <div v-else class=" box box-3" /> -->
 
@@ -55,8 +55,31 @@
       greet() {
         console.log(this.greeting);
       }
+    },
+
+    updated() {
+      console.log('updated');
     }
   })
+
+  app.component('test-box', {
+    template: `
+      <div class="box"/>
+    `,
+
+    created() {
+      console.log('created');
+    }
+    ,
+    mounted() {
+      console.log('mounted');
+    }
+    ,
+    unmounted() {
+      console.log('un mounted');
+    }
+  })
+
   app.mount('.app')
 </script>
 
