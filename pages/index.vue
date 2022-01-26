@@ -3,6 +3,12 @@
     <!-- Hero -->
     <Hero />
 
+    <!-- Search -->
+    <div class="container search">
+      <input type="text" placeholder="Search" v-model.lazy="searchInput" />
+      <button v-show="searchInput !== ''" class="button">Clear Search</button>
+    </div>
+
     <!-- Movie -->
     <div class="container movies">
       <div id="movie-grid" class="movies-grid">
@@ -52,6 +58,7 @@ export default {
   data() {
     return {
       movies: [],
+      searchInput: '',
     }
   },
 
