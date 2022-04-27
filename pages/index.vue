@@ -138,6 +138,7 @@ export default {
       result.data.results.forEach((movie) => {
         this.movies.push(movie)
       })
+      console.log(`Hello. . . `)
     },
 
     /* Function to search for a movie */
