@@ -16,8 +16,11 @@
       </button>
     </div>
 
+    <!-- Loading -->
+    <Loading v-if="$fetchState.pending" />
+
     <!-- Movie -->
-    <div class="container movies">
+    <div v-else class="container movies">
       <!-- Searched Movies -->
       <div v-if="searchInput !== ''" id="movie-grid" class="movies-grid">
         <div
@@ -113,6 +116,8 @@ export default {
       searchedMovies: [],
     }
   },
+
+  fetchDelay: 1000 /* Delays data fetching for 1s.  */,
 
   async fetch() {
     if (this.searchInput === '') {
